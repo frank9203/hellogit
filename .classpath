@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="lib" path="android.jar"/>
-	<classpathentry kind="lib" path="marmot.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="uiautomator.jar"/>
+	<classpathentry kind="lib" path="libs/android.jar"/>
+	<classpathentry kind="lib" path="libs/marmot.jar"/>
+	<classpathentry kind="lib" path="libs/uiautomator.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
