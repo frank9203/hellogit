@@ -55,7 +55,7 @@ public class Test_0005_NewContact extends UiAutomatorTestCase{
 		mm.log("Step 3 : Group.");
 		mm.clickOnButton("群组名称");
 		mm.clickOnButton("新建群组");
-		UiObject EditGroupName = new UiObject(new UiSelector().className("basefx.android.widget.EditText").index(0));
+		UiObject EditGroupName = new UiObject(new UiSelector().className("android.widget.EditText").index(0));
 		EditGroupName.setText("Test_MiuiLite1");
 		mm.clickOnButton("确定");
 		mm.clickOnButton("确定");
@@ -64,8 +64,10 @@ public class Test_0005_NewContact extends UiAutomatorTestCase{
 		mm.log("Step 4 : Photo.");
 		mm.getObjectByDescription("联系人照片").click();
 		if(mm.isTextExist("删除照片"))
+		{
 			mm.clickOnText("删除照片");
-		mm.getObjectByDescription("联系人照片").click();
+			mm.getObjectByDescription("联系人照片").click();
+		}
 		mm.clickOnText("拍照");
 		mm.pressBack();
 		found_FC("Take Photo");

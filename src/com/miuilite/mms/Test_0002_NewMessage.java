@@ -28,7 +28,7 @@ public class Test_0002_NewMessage extends UiAutomatorTestCase{
 		mm.clickOnButton("写短信");
 		
 		mm.log("Step 2 : Send To.");
-		UiObject Receiver = new UiObject(new UiSelector().className("basefx.android.widget.EditText").index(0));
+		UiObject Receiver = new UiObject(new UiSelector().className("android.widget.EditText").index(0));
 		Receiver.setText("12345678900");
 			
 		UiObject contacts = new UiObject(new UiSelector().className("android.widget.LinearLayout").index(2))
@@ -56,16 +56,7 @@ public class Test_0002_NewMessage extends UiAutomatorTestCase{
 		SendButton.click();
 		found_FC("Click SendButton");
 		mm.waitFor(10);
-		
-		mm.log("Step 5 : Creat newMms.");
-		mm.pressHome();
-		mm.clickOnText("短信");
-		mm.clickOnButton("写短信");
-		Receiver.setText("13436312171");
-		Text.setText("hello test");
-		SendButton.click();
-		mm.waitFor(5);
-		found_FC("Creat a NewMms");
+
 		mm.pressBack();
 		
 		

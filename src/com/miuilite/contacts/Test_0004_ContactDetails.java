@@ -49,7 +49,7 @@ public class Test_0004_ContactDetails extends UiAutomatorTestCase{
 		mm.log("Step 3 : Edit.");
 		mm.clickOnButton("编辑");
 		UiObject Name = new UiObject(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("basefx.android.widget.EditText").index(0));
+		.getChild(new UiSelector().className("android.widget.EditText").index(0));
 		Name.setText("123abc%");
 		mm.clickOnButton("确定");
 		found_FC("Edit");

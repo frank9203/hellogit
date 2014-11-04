@@ -60,7 +60,11 @@ public class Test_0002_ThemeDetails extends UiAutomatorTestCase{
 //		mm.clickOnText("WLAN");
 			
 		//Turn on WLAN.
-		UiObject Switch = new UiObject(new UiSelector().className("android.widget.Switch"));
+		UiObject Switch = null;
+		if(getUiDevice().getProductName()=="OPPO_13005")
+			Switch = new UiObject(new UiSelector().className("com.oppo.widget.OppoSwitch"));
+		else
+			Switch = new UiObject(new UiSelector().className("android.widget.Switch"));
 		if(!Switch.isChecked()){
 			Switch.click();
 			mm.waitFor(3);

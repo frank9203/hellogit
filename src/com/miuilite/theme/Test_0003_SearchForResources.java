@@ -37,15 +37,14 @@ public class Test_0003_SearchForResources extends UiAutomatorTestCase{
 		Search.click();
 		UiObject EditText = new UiObject(new UiSelector().className("android.widget.EditText").index(0));
 		EditText.click();
-		EditText.setText("MIUI 6");
+		EditText.setText("Honeycomb ICON");
 		UiObject SearchButton = new UiObject(new UiSelector().className("android.widget.ImageButton").index(1));
 		SearchButton.click();
 		found_FC("search");
 		
 		mm.log("Step 3 : ThmemDetails.");
-		mm.saveScreenshot("V6主题");
-//		EditText.clearTextField();
-		cc.assertTextExist("MIUI 6尝鲜版");
+		mm.saveScreenshot("search result");
+		cc.assertTextExist("Honeycomb ICONS");
 		
 	}
 	
@@ -53,10 +52,13 @@ public class Test_0003_SearchForResources extends UiAutomatorTestCase{
 		boolean connected = false;
 		
 		mm.launchActivity("com.android.settings/com.android.settings.Settings$WifiSettingsActivity");
-//		mm.clickOnText("WLAN");
 			
 		//Turn on WLAN.
-		UiObject Switch = new UiObject(new UiSelector().className("android.widget.Switch"));
+		UiObject Switch = null;
+		if(getUiDevice().getProductName()=="OPPO_13005")
+			Switch = new UiObject(new UiSelector().className("com.oppo.widget.OppoSwitch"));
+		else
+			Switch = new UiObject(new UiSelector().className("android.widget.Switch"));
 		if(!Switch.isChecked()){
 			Switch.click();
 			mm.waitFor(3);

@@ -39,7 +39,7 @@ public class Test_0003_MyProfile extends UiAutomatorTestCase{
 		mm.getObjectByText("我的群组", "android.widget.TextView").click();
 		found_FC("click to Mygroups");
 		mm.clickOnButton("新建群组");
-		UiObject EditText = new UiObject(new UiSelector().className("basefx.android.widget.EditText").index(0));
+		UiObject EditText = new UiObject(new UiSelector().className("android.widget.EditText").index(0));
 		EditText.setText("Test_MiuiLite0");
 		mm.clickOnButton("确定");
 		found_FC("NewGroups");
