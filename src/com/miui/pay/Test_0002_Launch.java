@@ -12,8 +12,8 @@ public class Test_0002_Launch extends UiAutomatorTestCase {
     public Marmot mm;
     public Checker cc;
     public static int device_type;
-    int x=0;
-    int y=0;
+    int x = 0;
+    int y = 0;
 
     @Override
     protected void setUp() throws Exception {
@@ -21,28 +21,40 @@ public class Test_0002_Launch extends UiAutomatorTestCase {
         mm = new Marmot(this.getClass());
         cc = new Checker();
         device_type = Get_device();
-        x=mm.getDisplayWidth();
-        y=mm.getDisplayHeight();
+        x = mm.getDisplayWidth();
+        y = mm.getDisplayHeight();
     }
 
     public void test_0002_Launch_Mibi() throws UiObjectNotFoundException {
-    	if (!mm.isScreenOn()) {
-			mm.wakeUp();
-			mm.waitFor(2);
-		}
-		if (device_type == 2) {
-			mm.moveUp();
-			mm.move(360, 1280, 360, 1000);
-			mm.pressHome();
-			mm.pressMenu();
-			mm.clickOnImage(0);
-		} else if (device_type == 3) {
-			mm.moveUp();
-			mm.move(540, 1900, 540, 1460);
-			mm.pressMenu();
-			mm.clickOnImage(0);
-		}
-		mm.pressHome();
+        if (!mm.isScreenOn()) {
+            mm.wakeUp();
+            mm.waitFor(2);
+            if (device_type == 2) {
+                mm.moveUp();
+                mm.move(360, 1280, 360, 1000);
+                mm.pressHome();
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            } else if (device_type == 3) {
+                mm.moveUp();
+                mm.move(540, 1900, 540, 1460);
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            }
+        }
+        if (device_type == 2) {
+            mm.moveUp();
+            mm.move(360, 1280, 360, 1000);
+            mm.pressHome();
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        } else if (device_type == 3) {
+            mm.moveUp();
+            mm.move(540, 1900, 540, 1460);
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        }
+        mm.pressHome();
         mm.log("Step 1 : Launch mibi app.");
         mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
         FC_ANR("open mibicenter");
@@ -52,7 +64,6 @@ public class Test_0002_Launch extends UiAutomatorTestCase {
             mm.waitFor(6);
             mm.log("open mibicenter successfully.");
         }
-
     }
 
     public int Get_device() {
@@ -71,13 +82,14 @@ public class Test_0002_Launch extends UiAutomatorTestCase {
             return 0;
         }
     }
-    public void FC_ANR(String str) throws UiObjectNotFoundException{
-		mm.waitFor(2);
-		if (mm.getObjectByText("报告 MIUI") != null){
-			mm.log(str+" FC.");
-			mm.clickOnButton("确定");
-		}
-	}
+
+    public void FC_ANR(String str) throws UiObjectNotFoundException {
+        mm.waitFor(2);
+        if (mm.getObjectByText("报告 MIUI") != null) {
+            mm.log(str + " FC.");
+            mm.clickOnButton("确定");
+        }
+    }
 
     @Override
     protected void tearDown() throws Exception {

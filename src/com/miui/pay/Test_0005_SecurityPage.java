@@ -22,38 +22,49 @@ public class Test_0005_SecurityPage extends UiAutomatorTestCase {
     }
 
     public void test_0005_SecurityPage() throws UiObjectNotFoundException {
-    	if (!mm.isScreenOn()) {
-			mm.wakeUp();
-			mm.waitFor(2);
-			if (device_type == 2) {
-				mm.moveUp();
-				mm.move(360, 1280, 360, 1000);
-				mm.pressHome();
-				mm.pressMenu();
-				mm.clickOnImage(0);
-			} else if (device_type == 3) {
-				mm.moveUp();
-				mm.move(540, 1900, 540, 1460);
-				mm.pressMenu();
-				mm.clickOnImage(0);
-			}
-			mm.pressHome();
-		}
+        if (!mm.isScreenOn()) {
+            mm.wakeUp();
+            mm.waitFor(2);
+            if (device_type == 2) {
+                mm.moveUp();
+                mm.move(360, 1280, 360, 1000);
+                mm.pressHome();
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            } else if (device_type == 3) {
+                mm.moveUp();
+                mm.move(540, 1900, 540, 1460);
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            }
+        }
+        if (device_type == 2) {
+            mm.moveUp();
+            mm.move(360, 1280, 360, 1000);
+            mm.pressHome();
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        } else if (device_type == 3) {
+            mm.moveUp();
+            mm.move(540, 1900, 540, 1460);
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        }
+        mm.pressHome();
+        mm.log("Step 1 : Launch mibi app.");
+        mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
+        FC_ANR("open mibicenter");
+        mm.waitFor(3);
 
-		mm.log("Step 1 : Launch mibi app.");
-		mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
-		FC_ANR("open mibicenter");
-		mm.waitFor(3);
-
-		if (!mm.isTextExist("我的米币")) {
-			mm.waitFor(2);
-		}
+        if (!mm.isTextExist("我的米币")) {
+            mm.waitFor(2);
+        }
 
         mm.log("Step2:open mibicenter setting page");
         if (device_type == 2) {
-        	mm.click(665, 100);
-        }else if(device_type==3){
-        	mm.click(995, 135);
+            mm.click(665, 100);
+        } else if (device_type == 3) {
+            mm.click(995, 135);
         }
         mm.waitFor(2);
         FC_ANR("opensettingpage");
@@ -64,7 +75,7 @@ public class Test_0005_SecurityPage extends UiAutomatorTestCase {
         FC_ANR("openGestures_password");
         mm.waitFor(2);
         mm.pressBack(2);
-        
+
     }
 
     public int Get_device() {
@@ -84,13 +95,14 @@ public class Test_0005_SecurityPage extends UiAutomatorTestCase {
         }
     }
 
-    public void FC_ANR(String str) throws UiObjectNotFoundException{
-		mm.waitFor(2);
-		if (mm.getObjectByText("报告 MIUI") != null){
-			mm.log(str+" FC.");
-			mm.clickOnButton("确定");
-		}
-	}
+    public void FC_ANR(String str) throws UiObjectNotFoundException {
+        mm.waitFor(2);
+        if (mm.getObjectByText("报告 MIUI") != null) {
+            mm.log(str + " FC.");
+            mm.clickOnButton("确定");
+        }
+    }
+
     @Override
     protected void tearDown() throws Exception {
         mm.finish();

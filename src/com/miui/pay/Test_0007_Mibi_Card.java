@@ -12,6 +12,7 @@ public class Test_0007_Mibi_Card extends UiAutomatorTestCase {
     public Marmot mm;
     public Checker cc;
     public static int device_type;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -21,32 +22,44 @@ public class Test_0007_Mibi_Card extends UiAutomatorTestCase {
     }
 
     public void test_0007_mibiCard_Charge() throws UiObjectNotFoundException {
-    	if (!mm.isScreenOn()) {
-			mm.wakeUp();
-			mm.waitFor(2);
-		}
-		if (device_type == 2) {
-			mm.moveUp();
-			mm.move(360, 1280, 360, 1000);
-			mm.pressHome();
-			mm.pressMenu();
-			mm.clickOnImage(0);
-		} else if (device_type == 3) {
-			mm.moveUp();
-			mm.move(540, 1900, 540, 1460);
-			mm.pressMenu();
-			mm.clickOnImage(0);
-		}
-		mm.pressHome();
+        if (!mm.isScreenOn()) {
+            mm.wakeUp();
+            mm.waitFor(2);
+            if (device_type == 2) {
+                mm.moveUp();
+                mm.move(360, 1280, 360, 1000);
+                mm.pressHome();
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            } else if (device_type == 3) {
+                mm.moveUp();
+                mm.move(540, 1900, 540, 1460);
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            }
+        }
+        if (device_type == 2) {
+            mm.moveUp();
+            mm.move(360, 1280, 360, 1000);
+            mm.pressHome();
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        } else if (device_type == 3) {
+            mm.moveUp();
+            mm.move(540, 1900, 540, 1460);
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        }
+        mm.pressHome();
 
-		mm.log("Step 1 : Launch mibi app.");
-		mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
-		FC_ANR("open mibicenter");
-		mm.waitFor(3);
+        mm.log("Step 1 : Launch mibi app.");
+        mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
+        FC_ANR("open mibicenter");
+        mm.waitFor(3);
 
-		if (!mm.isTextExist("我的米币")) {
-			mm.waitFor(2);
-		}
+        if (!mm.isTextExist("我的米币")) {
+            mm.waitFor(2);
+        }
         mm.log("Step 2: open the charge page");
         mm.clickOnButton("立即充值");
         mm.waitFor(2);
@@ -55,8 +68,9 @@ public class Test_0007_Mibi_Card extends UiAutomatorTestCase {
         cc.assertTextExist("米币卡");
 
         mm.log("Step 4:put alreay used card num");
-        UiObject pw = new UiObject(new UiSelector().className(
-                "android.widget.EditText").index(0).resourceId("com.xiaomi.payment:id/voucher_edit"));
+        UiObject pw = new UiObject(new UiSelector()
+                .className("android.widget.EditText").index(0)
+                .resourceId("com.xiaomi.payment:id/voucher_edit"));
         pw.clearTextField();
         pw.setText("1749649501220840");
         mm.clickOnButton("立即充值");
@@ -73,7 +87,8 @@ public class Test_0007_Mibi_Card extends UiAutomatorTestCase {
 
         mm.log("Step 6:make sure the camera can open successfully");
         mm.waitFor(2);
-        UiObject camera= new UiObject(new UiSelector().className("android.widget.ImageView").index(1));
+        UiObject camera = new UiObject(new UiSelector().className(
+                "android.widget.ImageView").index(1));
         camera.click();
         FC_ANR("open camera");
         mm.waitFor(2);
@@ -98,13 +113,14 @@ public class Test_0007_Mibi_Card extends UiAutomatorTestCase {
         }
     }
 
-    public void FC_ANR(String str) throws UiObjectNotFoundException{
-		mm.waitFor(2);
-		if (mm.getObjectByText("报告 MIUI") != null){
-			mm.log(str+" FC.");
-			mm.clickOnButton("确定");
-		}
-	}
+    public void FC_ANR(String str) throws UiObjectNotFoundException {
+        mm.waitFor(2);
+        if (mm.getObjectByText("报告 MIUI") != null) {
+            mm.log(str + " FC.");
+            mm.clickOnButton("确定");
+        }
+    }
+
     @Override
     protected void tearDown() throws Exception {
         mm.finish();

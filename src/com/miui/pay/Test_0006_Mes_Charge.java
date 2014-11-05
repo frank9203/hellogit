@@ -22,33 +22,45 @@ public class Test_0006_Mes_Charge extends UiAutomatorTestCase {
     }
 
     public void test_0006_Message_Charge() throws UiObjectNotFoundException {
-    	if (!mm.isScreenOn()) {
-			mm.wakeUp();
-			mm.waitFor(2);
-		}
-		if (device_type == 2) {
-			mm.moveUp();
-			mm.move(360, 1280, 360, 1000);
-			mm.pressHome();
-			mm.pressMenu();
-			mm.clickOnImage(0);
-		} else if (device_type == 3) {
-			mm.moveUp();
-			mm.move(540, 1900, 540, 1460);
-			mm.pressMenu();
-			mm.clickOnImage(0);
-		}
-		mm.pressHome();
-    	mm.log("Step 1 : Launch mibi app.");
-		mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
-		FC_ANR("open mibicenter");
-		mm.waitFor(3);
+        if (!mm.isScreenOn()) {
+            mm.wakeUp();
+            mm.waitFor(2);
+            if (device_type == 2) {
+                mm.moveUp();
+                mm.move(360, 1280, 360, 1000);
+                mm.pressHome();
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            } else if (device_type == 3) {
+                mm.moveUp();
+                mm.move(540, 1900, 540, 1460);
+                mm.pressMenu();
+                mm.clickOnImage(0);
+            }
+        }
+        if (device_type == 2) {
+            mm.moveUp();
+            mm.move(360, 1280, 360, 1000);
+            mm.pressHome();
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        } else if (device_type == 3) {
+            mm.moveUp();
+            mm.move(540, 1900, 540, 1460);
+            mm.pressMenu();
+            mm.clickOnImage(0);
+        }
+        mm.pressHome();
+        mm.log("Step 1 : Launch mibi app.");
+        mm.launchActivity("com.xiaomi.payment/.MiliCenterEntryActivity");
+        FC_ANR("open mibicenter");
+        mm.waitFor(3);
 
-		if (!mm.isTextExist("我的米币")) {
-			mm.waitFor(2);
-		}
+        if (!mm.isTextExist("我的米币")) {
+            mm.waitFor(2);
+        }
 
-		mm.log("Step2: open charge page");
+        mm.log("Step2: open charge page");
         mm.clickOnButton("立即充值");
         FC_ANR("charge");
         if (mm.isTextExist("正在加载")) {
@@ -67,7 +79,8 @@ public class Test_0006_Mes_Charge extends UiAutomatorTestCase {
         mm.getObjectByText("确认充值", "android.widget.Button").click();
         mm.waitFor(50);
         cc.assertTextExist("短信充值");
-        cc.assertUiObejctExist(new UiObject(new UiSelector().className("android.widget.TextView").text("1米币充值成功")));
+        cc.assertUiObejctExist(new UiObject(new UiSelector().className(
+                "android.widget.TextView").text("1米币充值成功")));
 
         mm.saveScreenshot("MMSuccess.png");
         mm.waitFor(3);
@@ -121,13 +134,13 @@ public class Test_0006_Mes_Charge extends UiAutomatorTestCase {
         }
     }
 
-    public void FC_ANR(String str) throws UiObjectNotFoundException{
-		mm.waitFor(2);
-		if (mm.getObjectByText("报告 MIUI") != null){
-			mm.log(str+" FC.");
-			mm.clickOnButton("确定");
-		}
-	}
+    public void FC_ANR(String str) throws UiObjectNotFoundException {
+        mm.waitFor(2);
+        if (mm.getObjectByText("报告 MIUI") != null) {
+            mm.log(str + " FC.");
+            mm.clickOnButton("确定");
+        }
+    }
 
     @Override
     protected void tearDown() throws Exception {
