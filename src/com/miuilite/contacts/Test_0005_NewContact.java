@@ -1,7 +1,3 @@
-/**
- * 跑此条case前，请确保：1.手机未存有联系人1234abcd^_^；2.使用系统自带的输入法
- */
-
 package com.miuilite.contacts;
 
 import com.android.uiautomator.core.UiObject;
@@ -37,12 +33,18 @@ public class Test_0005_NewContact extends UiAutomatorTestCase{
 		
 		UiObject Name = new UiObject(new UiSelector().text("姓名"));
 		Name.setText("1234abcd^_^");
-		
 		UiObject Company = new UiObject(new UiSelector().text("公司"));
+		Company.click();
+		if (mm.isTextExist("发现同名联系人")) {
+			mm.clickOnButton("取消");
+		}
+		
 		Company.setText("XiaoMi");
+		mm.saveScreenshot("Company");
 
 		UiObject Title = new UiObject(new UiSelector().text("职位"));
 		Title.setText("Testing Engineer");
+		mm.saveScreenshot("Title");
 		
 		UiObject Tel = new UiObject(new UiSelector().text("电话"));
 		Tel.setText("13436312171");
