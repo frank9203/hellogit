@@ -156,8 +156,6 @@ public class Test_0001_MyXiaomiAccount extends UiAutomatorTestCase{
 		if(!mm.isChecked(0)){
 			mm.clickOnCheckBox(0) ;
 			mm.waitFor(3);
-			mm.waitFor(3);
-		
 		}
 		if(!mm.isTextExist("已连接")){
 			UiScrollable collectionObject = new UiScrollable(new UiSelector().scrollable(true)) ;
