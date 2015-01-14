@@ -110,15 +110,11 @@ public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 		//下载判断
 		
 		if(mm.getObjectByText("应用").isEnabled()){	
-			mm.pressBack();
 			mm.waitFor(1);
+			mm.pressBack(5);	
 		}
-		if(mm.getObjectByText("下载").isEnabled()){
-			mm.clickOnButton("下载");
-			mm.saveScreenshot("Download.png");
-			mm.waitFor(5);
-		}
-		mm.pressBack(5);
+		
+	//	mm.pressBack(5);
 
 		
 	}
