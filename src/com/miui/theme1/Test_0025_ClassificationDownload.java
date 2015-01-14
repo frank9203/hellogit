@@ -11,17 +11,17 @@ import com.miui.marmot.lib.Marmot;
 public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 	Marmot mm ;
 	Checker cc ;
-	
-	
+
+
 	@Override 
 	protected void setUp() throws Exception{
 		super.setUp();
-        mm = new Marmot(this.getClass()) ;
-        cc = new Checker() ;
+		mm = new Marmot(this.getClass()) ;
+		cc = new Checker() ;
 	}
-	
+
 	public void test_0001_ClassificationDownload() throws UiObjectNotFoundException{
-		
+
 		mm.log("Step 1 : OpenUnlock");
 		int DisplayWidth ;
 		DisplayWidth = this.getUiDevice().getDisplayWidth() ;
@@ -44,9 +44,9 @@ public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 			}
 			mm.waitFor(2);
 		}
-	
-	
-		
+
+
+
 		mm.log("Step 2 : Check XiaoMiAccount");
 		mm.pressHome();
 		mm.clickOnText("主题风格");
@@ -55,9 +55,39 @@ public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 		mm.waitFor(2);
 		mm.pressBack();
 		
+		//删除本地主题
+		mm.log("Step 3 :Delete Local Theme");
+       		
+		UiObject localtheme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(4));
+		localtheme.click() ;
+		mm.waitFor(1);
+		UiObject theme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
+		.getChild(new UiSelector().className("android.widget.ListView").index(0))
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1)) ;
+		
+	//	判断手机分辨率，测试针对MI3编写
+		if(theme.exists()){
+			theme.longClick() ;
+			 mm.waitFor(2);
+			 if(mm.isTextExist("全选")){
+				 mm.clickOnButton("全选"); 
+			 }
+			 mm.saveScreenshot("delete.png");
+			 mm.waitFor(1);
+			 mm.clickOnButton("删除");
+			 mm.waitFor(1);
+			 mm.clickOnButton("确定");
+			 mm.waitFor(3);
+		}
+		mm.pressBack();
 		
 		//点击分类
-		mm.log("Step 3 : Check Classification");
+		mm.log("Step 4 : Check Classification");
 		UiObject classification = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
@@ -74,16 +104,16 @@ public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 		mm.waitFor(1);
 		mm.saveScreenshot("view.png");
 		mm.waitFor(1);
-		
+
 		//UiCheck Classification
-		mm.log("Step 4 : UiCheck Classification");
+		mm.log("Step 5 : UiCheck Classification");
 		UiScrollable scroll = new UiScrollable(new UiSelector().scrollable(true)) ;
-	//	scroll.scrollToEnd(10) ;
+		//	scroll.scrollToEnd(10) ;
 		mm.saveScreenshot("Scroll.png");
-		
-		
+
+
 		//分别点击排行
-		mm.log("Step 5: Check Ranking");
+		mm.log("Step 6: Check Ranking");
 		UiObject ranking = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
@@ -94,32 +124,30 @@ public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 		mm.waitFor(1);
 		mm.saveScreenshot("free.png");
 		mm.waitFor(1);
-	//	scroll.scrollToEnd(10);
+		//	scroll.scrollToEnd(10);
 		mm.waitFor(2);
-		mm.log("Step 6 :Download free theme") ;
-		UiObject theme = new UiObject (new UiSelector().className("android.widget.FrameLayout").index(1))
+		mm.log("Step 7 :Download free theme") ;
+		UiObject theme1 = new UiObject (new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.ListView").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0));
-		theme.click() ;
+		theme1.click() ;
 		mm.waitFor(1);
-		
-		//下载判断
-		
-		if(mm.getObjectByText("应用").isEnabled()){	
-			mm.waitFor(1);
-			mm.pressBack(5);	
-		}
-		
-	//	mm.pressBack(5);
 
-		
+		//下载判断
+
+		mm.clickOnButton("下载");
+		mm.waitFor(2);
+		mm.saveScreenshot("Download.png");
+		mm.waitFor(5);
+		mm.pressBack(5);
+
 	}
-	
-	
+
+
 	@Override
 	protected void tearDown() throws Exception{
 		mm.finish();
