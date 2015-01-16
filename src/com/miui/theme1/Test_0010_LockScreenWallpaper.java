@@ -100,19 +100,10 @@ public class Test_0010_LockScreenWallpaper extends UiAutomatorTestCase {
 		// 点击锁屏壁纸
 		mm.log("Step 5 Check ScreenWallpaper");
 		mm.getObjectByText("锁屏壁纸", "android.widget.TextView").click();
-	/*	UiObject screenwallpaper = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.GridView").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1)) ;
-		screenwallpaper.click() ;*/ //点击无效使用坐标点击
-	//	mm.click(798, 437);
-	
 		mm.waitFor(1);
 		mm.saveScreenshot("ScreenWallpaper.png");
 		mm.waitFor(1);
 		
-		//分别点击排行，分类，专题，本地
 	
 		//分别点击排行，专题，本地
 		mm.log("Step 6: Check Ranking");
@@ -174,7 +165,7 @@ public class Test_0010_LockScreenWallpaper extends UiAutomatorTestCase {
 		mm.waitFor(1);
 		mm.saveScreenshot("SearchTheme.png");
 		mm.waitFor(1);
-		mm.pressBack();
+		mm.pressBack(3);
 		
 	
 	}

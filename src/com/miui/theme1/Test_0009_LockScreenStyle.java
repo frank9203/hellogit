@@ -169,12 +169,6 @@ public class Test_0009_LockScreenStyle extends UiAutomatorTestCase{
 		mm.waitFor(1);
 		mm.pressBack();
 
-
-		//分想  & 下载（判断已下载情况）
-
-
-
-
 		mm.pressBack(4);	
 		
 	}

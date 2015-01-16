@@ -98,7 +98,7 @@ public class Test_0016_Fonts extends UiAutomatorTestCase {
 		mm.waitFor(1);
 
 		// 点击锁屏样式
-		mm.log("Step 5 Check ScreenStyle");
+		mm.log("Step 5 Check Fonts");
 		UiObject screenstyle = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.FrameLayout").index(1))
@@ -106,7 +106,7 @@ public class Test_0016_Fonts extends UiAutomatorTestCase {
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(6));	
 		screenstyle.click() ;
 		mm.waitFor(1);
-		mm.saveScreenshot("screenstyle.png");
+		mm.saveScreenshot("Fonts.png");
 		mm.waitFor(1);
 
 

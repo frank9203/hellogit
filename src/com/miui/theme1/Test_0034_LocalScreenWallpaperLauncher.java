@@ -2,12 +2,13 @@ package com.miui.theme1;
 
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.miui.marmot.lib.Checker;
 import com.miui.marmot.lib.Marmot;
 
-public class Test_0031_LocalThemeImport extends UiAutomatorTestCase {
+public class Test_0034_LocalScreenWallpaperLauncher extends UiAutomatorTestCase{
 	Marmot mm ;
 	Checker cc ;
 	
@@ -17,8 +18,7 @@ public class Test_0031_LocalThemeImport extends UiAutomatorTestCase {
 		mm = new Marmot(this.getClass()) ;
 		cc = new Checker() ;
 	}
-
-	public void test_0001_LoaclThemeImport() throws UiObjectNotFoundException{
+	public void test_0001_LocalScreenWallpaperLauncher() throws UiObjectNotFoundException{
 		mm.log("Step 1 : OpenUnlock");
 		int DisplayWidth ;
 		DisplayWidth = this.getUiDevice().getDisplayWidth() ;
@@ -41,30 +41,46 @@ public class Test_0031_LocalThemeImport extends UiAutomatorTestCase {
 			}
 			mm.waitFor(2);
 		}
-
 	
+
 		mm.pressHome();
 		mm.clickOnText("主题风格");
-		//点击本地
-		mm.log("Step 2: Check LocalTheme");
-		UiObject Localtheme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
+		
+	   //点击混搭
+		
+		mm.log("Step 2:Check MashUp");
+		UiObject mashup = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(4));
-		Localtheme.click() ;
+		.getChild(new UiSelector().className("android.widget.LinearLayout").index(3));
+		 mashup.click() ;
+		mm.saveScreenshot("MashUp.png");
 		mm.waitFor(1);
-		mm.saveScreenshot("LocalTheme.png");
+		
+		// 点击锁屏壁纸
+		mm.log("Step 3: Check ScreenWallpaper");
+		mm.getObjectByText("锁屏壁纸", "android.widget.TextView").click();
 		mm.waitFor(1);
+		mm.saveScreenshot("ScreenWallpaper.png");
+		mm.waitFor(1);
+		UiScrollable scroll = new UiScrollable(new UiSelector().scrollable(true)) ;
+		scroll.scrollToEnd(10) ;
+		mm.waitFor(1);
+		mm.saveScreenshot("ScreenWallpaper.png");
+		mm.waitFor(2);
+		
+		mm.log("Step 4:Check More ScreenWallpaper");
+		mm.clickOnButton("更多热门壁纸专题");
+		mm.waitFor(1);
+		mm.saveScreenshot("MoreScreenWallpaper.png");
+		mm.waitFor(2);
+		mm.pressBack(5);
 	
-		mm.log("Step 3 :Import LoaclTheme");
-		mm.clickOnButton("从SD卡导入");
-		mm.saveScreenshot("Import.png");
-		mm.waitFor(1);
-		mm.pressBack(6);
-
 	}
-
-
+	
+	
+	
+	
 	@Override
 	protected void tearDown() throws Exception{
 		mm.finish();
