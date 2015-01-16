@@ -97,7 +97,7 @@ public class Test_0016_Fonts extends UiAutomatorTestCase {
 		mm.saveScreenshot("MashUp.png");
 		mm.waitFor(1);
 
-		// 点击锁屏样式
+		// 点击字体
 		mm.log("Step 5 Check Fonts");
 		UiObject screenstyle = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
@@ -158,7 +158,7 @@ public class Test_0016_Fonts extends UiAutomatorTestCase {
 		mm.pressBack();
 
 
-		// 查询锁屏样式
+		// 查询字体
 		mm.log("Step 10:Search ScreenStyle");
 		UiObject search = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(0))
 		.getChild(new UiSelector().className("android.view.View").index(0))
