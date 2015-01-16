@@ -12,7 +12,6 @@ public class Test_0001_MyXiaomiAccount extends UiAutomatorTestCase{
 	Marmot mm ;
 	Checker cc ;
 	
-	
 	@Override 
 	protected void setUp() throws Exception{
 		super.setUp();
