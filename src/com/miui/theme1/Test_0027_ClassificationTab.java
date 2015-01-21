@@ -49,15 +49,10 @@ public class Test_0027_ClassificationTab extends UiAutomatorTestCase{
 		mm.clickOnText("主题风格");
 	    //点击分类
 		mm.log("Step 2 : Check Classification");
-		
-		UiObject classification = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1));
-		classification.click() ;
+		mm.getObjectByText("分类", "android.widget.TextView").click();
 		mm.waitFor(1);
 		mm.saveScreenshot("classification.png");
-		mm.waitFor(1);
+		mm.waitFor(2);
 		for(int i=0;i<6;i++){	
 		UiObject view = new UiObject (new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))

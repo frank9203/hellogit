@@ -49,6 +49,12 @@ public class Test_0029_SpecialTopicMore extends UiAutomatorTestCase {
 		mm.clickOnText("主题风格");
 		//点击专题
 		mm.log("Step 2 :Check SpecialTopic");
+		mm.getObjectByText("专题", "android.widget.TextView").click();
+		mm.waitFor(2);
+		mm.saveScreenshot("SpecialTopic.png");
+		mm.waitFor(1);
+		
+		/*mm.log("Step 2 :Check SpecialTopic");
 		UiObject SpecialTopic = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
@@ -56,7 +62,7 @@ public class Test_0029_SpecialTopicMore extends UiAutomatorTestCase {
 		SpecialTopic.click() ;
 		mm.waitFor(1);
 		mm.saveScreenshot("SpecialTopic.png");
-		mm.waitFor(1);
+		mm.waitFor(1);*/
 		//
 		mm.log("Step 3 :Check MoreTopic");
 		mm.click(285, 383);
@@ -65,7 +71,7 @@ public class Test_0029_SpecialTopicMore extends UiAutomatorTestCase {
 	    scroll.scrollToEnd(10) ;
 	    mm.saveScreenshot("scroll.png");
 	    mm.waitFor(2);
-	    mm.clickOnButton("更多热门专题");
+	    mm.clickOnButton("搭配热门主题");
 	    mm.saveScreenshot("MoreTopic.png");
 	    mm.waitFor(2);
 	    mm.pressBack(5);

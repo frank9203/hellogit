@@ -50,12 +50,9 @@ public class Test_0039_FontsDownload extends UiAutomatorTestCase {
 
 		//点击混搭
 
-		mm.log("Step 2 Check MashUp");
-		UiObject mashup = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(3));
-		mashup.click() ;
+		mm.log("Step 2 :Check MashUp");
+		mm.getObjectByText("混搭", "android.widget.TextView").click();
+		mm.waitFor(2);
 		mm.saveScreenshot("MashUp.png");
 		mm.waitFor(1);
 
@@ -89,17 +86,14 @@ public class Test_0039_FontsDownload extends UiAutomatorTestCase {
 			 mm.waitFor(1);
 			 mm.clickOnButton("确定");
 			 mm.waitFor(2);
-			 mm.pressBack();
+			 
 		}
-
+		mm.pressBack();
+		mm.waitFor(2);
 		//分别点击排行
 		mm.log("Step 5: Check Ranking");
-		UiObject ranking = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0));
-		ranking.click() ;
-		mm.waitFor(2);
+		mm.getObjectByText("排行", "android.widget.TextView").click();
+		mm.waitFor(1);
 		mm.getObjectByText("免费", "android.widget.TextView").click();
 		mm.waitFor(1);
 		mm.saveScreenshot("free.png");

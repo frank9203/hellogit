@@ -88,15 +88,11 @@ public class Test_0005_Classification extends UiAutomatorTestCase {
 		mm.waitFor(2) ;
 		
 		//点击分类
-		mm.log("Step 4 : Check Classification");
-		UiObject classification = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1));
-		classification.click() ;
+		mm.log("Step 2 : Check Classification");
+		mm.getObjectByText("分类", "android.widget.TextView").click();
 		mm.waitFor(1);
 		mm.saveScreenshot("classification.png");
-		mm.waitFor(1);
+		mm.waitFor(2);
 		UiObject view = new UiObject (new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.view.View").index(0))

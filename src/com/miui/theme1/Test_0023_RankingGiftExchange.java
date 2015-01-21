@@ -46,12 +46,10 @@ public class Test_0023_RankingGiftExchange extends UiAutomatorTestCase{
 		mm.pressHome();
 		mm.clickOnText("主题风格");
 		//点击排行
-		mm.log("Step 2 :Check Ranking");
-		UiObject ranking = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0));
-		ranking.click() ;
+		mm.log("Step 2 : Check Ranking");
+		mm.getObjectByText("排行", "android.widget.TextView").click();
+		mm.waitFor(1);
+		mm.saveScreenshot("Ranking.png");
 		mm.waitFor(2);
 		mm.getObjectByText("收费", "android.widget.TextView").click();
 		mm.waitFor(2);

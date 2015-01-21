@@ -45,8 +45,16 @@ public class Test_0030_LocalThemeApplication extends UiAutomatorTestCase {
 	
 		mm.pressHome();
 		mm.clickOnText("主题风格");
+	
+		
 		//点击本地
-		mm.log("Step 2: Check LocalTheme");
+		mm.log("Step 2 :Check Local");
+		mm.getObjectByText("本地", "android.widget.TextView").click();
+		mm.waitFor(2);
+		mm.saveScreenshot("Local.png");
+		mm.waitFor(1);
+		
+		/*mm.log("Step 2: Check LocalTheme");
 		UiObject Localtheme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
@@ -54,7 +62,7 @@ public class Test_0030_LocalThemeApplication extends UiAutomatorTestCase {
 		Localtheme.click() ;
 		mm.waitFor(1);
 		mm.saveScreenshot("LocalTheme.png");
-		mm.waitFor(1);
+		mm.waitFor(1);*/
 		
 		//
 		mm.log("Step 3 :Application LoaclTheme");

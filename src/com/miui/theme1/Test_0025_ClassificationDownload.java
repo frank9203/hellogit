@@ -54,48 +54,41 @@ public class Test_0025_ClassificationDownload extends UiAutomatorTestCase {
 		mm.clickOnImage(0);
 		mm.waitFor(2);
 		mm.pressBack();
-		
+
 		//删除本地主题
 		mm.log("Step 3 :Delete Local Theme");
-       		
-		UiObject localtheme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(4));
-		localtheme.click() ;
+		mm.getObjectByText("本地", "android.widget.TextView").click();
+		mm.waitFor(2);
+		mm.saveScreenshot("Local.png");
 		mm.waitFor(1);
 		UiObject theme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.ListView").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1)) ;
-		
-	//	判断手机分辨率，测试针对MI3编写
+
+		//	判断手机分辨率，测试针对MI3编写
 		if(theme.exists()){
 			theme.longClick() ;
-			 mm.waitFor(2);
-			 if(mm.isTextExist("全选")){
-				 mm.clickOnButton("全选"); 
-			 }
-			 mm.saveScreenshot("delete.png");
-			 mm.waitFor(1);
-			 mm.clickOnButton("删除");
-			 mm.waitFor(1);
-			 mm.clickOnButton("确定");
-			 mm.waitFor(3);
+			mm.waitFor(2);
+			if(mm.isTextExist("全选")){
+				mm.clickOnButton("全选"); 
+			}
+			mm.saveScreenshot("delete.png");
+			mm.waitFor(1);
+			mm.clickOnButton("删除");
+			mm.waitFor(1);
+			mm.clickOnButton("确定");
+			mm.waitFor(3);
 		}
 		mm.pressBack();
-		
+
 		//点击分类
-		mm.log("Step 4 : Check Classification");
-		UiObject classification = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1));
-		classification.click() ;
+		mm.log("Step 2 : Check Classification");
+		mm.getObjectByText("分类", "android.widget.TextView").click();
 		mm.waitFor(1);
 		mm.saveScreenshot("classification.png");
-		mm.waitFor(1);
+		mm.waitFor(2);
 		UiObject view = new UiObject (new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.view.View").index(0))

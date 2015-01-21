@@ -62,17 +62,22 @@ public class Test_0050_ClearSearchHistory extends UiAutomatorTestCase {
 		
 		//点击分类
 		mm.log("Step 3:check theme launcher");
-		for(int i=0;i<5;i++){
-			UiObject theme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-			.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-			.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-			.getChild(new UiSelector().className("android.widget.LinearLayout").index(i));
-			theme.click() ;
-			mm.waitFor(1);
-			mm.saveScreenshot(i+"theme.png");
-			mm.waitFor(1);
-			mm.pressBack();
+		if(DisplayWidth ==720){
+			mm.pressBack(3);
+		}else{
+			for(int i=0;i<5;i++){
+				UiObject theme = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
+				.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
+				.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
+				.getChild(new UiSelector().className("android.widget.LinearLayout").index(i));
+				theme.click() ;
+				mm.waitFor(1);
+				mm.saveScreenshot(i+"theme.png");
+				mm.waitFor(1);
+				mm.pressBack();
+			}
 		}
+		
 		mm.pressBack(2);
 
 	}

@@ -45,12 +45,9 @@ public class Test_0032_MashUpLauncher extends UiAutomatorTestCase {
 
 		mm.pressHome();
 		mm.clickOnText("主题风格");
-		mm.log("Step 2: Check MashUp");
-		UiObject mashup = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(3));
-		mashup.click() ;
+		mm.log("Step 2 :Check MashUp");
+		mm.getObjectByText("混搭", "android.widget.TextView").click();
+		mm.waitFor(2);
 		mm.saveScreenshot("MashUp.png");
 		mm.waitFor(1);
 

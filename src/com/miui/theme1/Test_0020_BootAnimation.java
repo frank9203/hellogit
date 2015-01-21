@@ -8,7 +8,7 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.miui.marmot.lib.Checker;
 import com.miui.marmot.lib.Marmot;
 
-public class test_0020_BootAnimation extends UiAutomatorTestCase{
+public class Test_0020_BootAnimation extends UiAutomatorTestCase{
 	Marmot mm ;
 	Checker cc ;
 	

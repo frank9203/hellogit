@@ -87,13 +87,22 @@ public class Test_0024_RankingShareCollect extends UiAutomatorTestCase {
 		mm.waitFor(2);
 		
 		//点击排行
-		mm.log("Step 4 :Check Ranking");
+		/*mm.log("Step 4 :Check Ranking");
 		UiObject ranking = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
 		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0));
 		ranking.click() ;
+		mm.waitFor(2);*/
+		
+		mm.log("Step 2 : Check Ranking");
+		mm.getObjectByText("排行", "android.widget.TextView").click();
+		mm.waitFor(1);
+		mm.saveScreenshot("Ranking.png");
 		mm.waitFor(2);
+		
+		
+		
 		UiScrollable scroll = new  UiScrollable(new UiSelector().scrollable(true)) ;
 		if(!mm.getObjectByText("收费", "android.widget.TextView").isSelected()){
 			mm.getObjectByText("收费", "android.widget.TextView").click();

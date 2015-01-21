@@ -89,13 +89,9 @@ public class Test_0006_SpecialTopic extends UiAutomatorTestCase{
 		mm.waitFor(2);
 
 		//点击专题
-		mm.log("Step 5 :Check SpecialTopic");
-		UiObject SpecialTopic = new UiObject(new UiSelector().className("android.widget.FrameLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(0))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(1))
-		.getChild(new UiSelector().className("android.widget.LinearLayout").index(2));
-		SpecialTopic.click() ;
-		mm.waitFor(1);
+		mm.log("Step 2 :Check SpecialTopic");
+		mm.getObjectByText("专题", "android.widget.TextView").click();
+		mm.waitFor(2);
 		mm.saveScreenshot("SpecialTopic.png");
 		mm.waitFor(1);
 		UiScrollable scroll = new UiScrollable(new UiSelector().scrollable(true)) ;
