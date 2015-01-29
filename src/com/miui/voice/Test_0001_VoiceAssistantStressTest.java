@@ -71,7 +71,6 @@ public class Test_0001_VoiceAssistantStressTest extends UiAutomatorTestCase{
 			voice.click() ;
 		}*/
 			
-		
 		mm.pressBack(3);
 	}
 

@@ -48,7 +48,6 @@ public class Test_0001_UnLockscreenStressTest extends UiAutomatorTestCase{
 		mm.log(i+"");
 	}
 	
-
 	public void found_FC(String str) throws UiObjectNotFoundException{
 		mm.waitFor(2);
 		if (mm.getObjectByText("报告 MIUI") != null){
