@@ -39,7 +39,7 @@ public class Test_T1755392_NewGroup extends UiAutomatorTestCase {
 
 		mm.log("Step 2: Enter Group view by clicking Group item.");
 		mm.getObjectByText("鎴戠殑缇ょ粍", "android.widget.TextView").click();
-		mm.waitFor(1);
+		mm.waitFor(2);
 		CheckCurrentView("com.android.contacts/com.android.contacts.activities.ContactsGroupActivity");
 
 		mm.log("Step 3: Click New Group button, input group name, and confirm.");
