@@ -2,7 +2,9 @@ package com.miui.lockscreen;
 
 import android.os.RemoteException;
 
+import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.miui.marmot.lib.Checker;
 import com.miui.marmot.lib.Marmot;
@@ -17,7 +19,7 @@ public class Test_0001_UnLockscreenStressTest extends UiAutomatorTestCase{
 		mm = new Marmot(this.getClass()) ;
 		cc = new Checker() ;
 	}
-	public void test_0001_UnloclscreenStressTest() throws RemoteException{
+	public void test_0001_UnloclscreenStressTest() throws RemoteException, UiObjectNotFoundException{
 		mm.log("Step 1:OpenUnlock StreeTest 2000");
 		int DisplayWidth ;
 		int i = 0 ;
@@ -45,7 +47,9 @@ public class Test_0001_UnLockscreenStressTest extends UiAutomatorTestCase{
 				i++ ;
 			}
 		}	
-		mm.log(i+"");
+		mm.log(i+"");		
+		
+		
 	}
 	
 	public void found_FC(String str) throws UiObjectNotFoundException{
