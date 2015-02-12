@@ -12,6 +12,7 @@ import junit.framework.Assert;
 
 ///writer:wangweiwei1
 //Created:20150202_M3W_Alpha_5.1.30
+//Compiled successfully:20150512_M3W_Dev_5.2.11
 
 
 public class Test_T1755270_NewContactEnterName extends UiAutomatorTestCase {//1755270
@@ -39,7 +40,7 @@ public class Test_T1755270_NewContactEnterName extends UiAutomatorTestCase {//17
 		mm.pressHome();
 		cc.assertUiObejctExist(mm.getObjectByText("联系人", "android.widget.TextView"));
 		mm.getObjectByText("联系人", "android.widget.TextView").click();
-		mm.waitFor(1);
+		mm.waitFor(3);
 
 		mm.log("Step 2: Press New Contact button.");
 		cc.assertUiObejctExist(mm.getObjectByText("新建联系人", "android.widget.Button"));
