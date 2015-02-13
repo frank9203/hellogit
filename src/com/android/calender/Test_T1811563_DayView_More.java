@@ -50,7 +50,7 @@ public class Test_T1811563_DayView_More extends UiAutomatorTestCase {
 		UiObject clear_icon = new UiObject(new UiSelector()
     				.className("android.widget.ImageView").index(0)
     				.resourceId("com.android.systemui:id/clearButton"));
-		cc.assertTrue("clearButton doesn't exist.", clear_icon.exists());
+		cc.assertTrue("clearButton displays or not.", clear_icon.exists());
 		cc.assertTextExist("可用");
 		mm.pressBack();
 
@@ -71,23 +71,26 @@ public class Test_T1811563_DayView_More extends UiAutomatorTestCase {
     				.className("android.widget.Button").instance(5));
 		String nextD_text = nextD_button.getText();
 		nextD_button.click();
-		mm.log(nextD_text);
+		mm.log("Next data is "+ nextD_text);
 		cc.assertUiObejctExist(mm.getObjectByText("确定", "android.widget.Button"));
 		mm.getObjectByText("确定", "android.widget.Button").click();
 		mm.waitFor(3);
 		mm.getObjectByText("更多", "android.widget.Button").click();
 		mm.waitFor(2);
-		cc.assertUiObejctExist(mm.getObjectByText("跳转到指定日期", "android.widget.TextView"));
+		//cc.assertUiObejctExist(mm.getObjectByText("跳转到指定日期", "android.widget.TextView"));
 		mm.getObjectByText("跳转到指定日期", "android.widget.TextView").click();
 		mm.waitFor(3);
 		UiObject currentD_button = new UiObject(new UiSelector()
     				.className("android.widget.EditText").instance(2));
 		String currentD_text = currentD_button.getText();
-		mm.log(nextD_text);
-		mm.log(currentD_text); 
+		//mm.log(nextD_text);
+		mm.log("After switch the data is " + currentD_text); 
 		cc.assertTrue("Switch to some day successfully.", nextD_text.equalsIgnoreCase(currentD_text));
 
 		mm.getObjectByText("确定", "android.widget.Button").click();
+		mm.waitFor(2);
+		cc.assertUiObejctExist(mm.getObjectByText("月", "android.widget.Button"));
+		mm.getObjectByText("月", "android.widget.Button").click();
 		mm.waitFor(2);
 		mm.getObjectByText("更多", "android.widget.Button").click();
 		mm.waitFor(3);
@@ -101,7 +104,7 @@ public class Test_T1811563_DayView_More extends UiAutomatorTestCase {
 		mm.waitFor(3);
 		mm.getObjectByText("设置", "android.widget.TextView").click();
 		mm.waitFor(3);
-		cc.assertTrue("Calender Settings view isn't opened.", CheckCurrentView("com.android.calendar/com.android.calendar.CalendarSettingsActivity"));
+		cc.assertTrue("Calender Settings view is opened or not.", CheckCurrentView("com.android.calendar/com.android.calendar.CalendarSettingsActivity"));
 		mm.pressBack();
 	}
 
