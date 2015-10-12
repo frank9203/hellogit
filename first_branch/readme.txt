@@ -1,6 +1,7 @@
 add first word
 add second word
 add third word
+add forth word 
 git has a mutable index called stage
 <<<<<<< HEAD
 =======
