@@ -1,0 +1,5 @@
+fix bug
+
+git diff HEAD -- README
+change the feature1
+test git tash
